@@ -1,0 +1,11 @@
+code .gitignore
+
+
+Paste:
+
+__pycache__/
+*.pyc
+*.pyo
+.env
+.DS_Store
+*.log
