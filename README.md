@@ -27,4 +27,4 @@ docker compose up -d
 - Dockerfile layer caching (COPY requirements before code)
 - depends_on with health checks (app waits for DB to be ready)
 - Named volumes for data persistence
-- Container networking (app reaches db by service name, not IP)
+- Container networking (app reaches db by service name, not IP)# CI/CD enabled
