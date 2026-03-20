@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches: [ main ]
-  pull request: [ main ]
+  pull_request: [ main ]
 
 jobs:
   build-test-push:
