@@ -1,0 +1,39 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull request: [ main ]
+
+jobs:
+  build-test-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+          uses: actions/checkout@v3
+
+      - name: Log in to Docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set image tag
+        run: |
+          docker build -t $ {{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} ${{ secrets.DOCKER_USERNAME }}/salesken-app:latest
+
+      - name: Test Docker image
+        run: |
+          docker run -d --name test-app -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }}
+          sleep 5
+          docker ps | grep test-app
+          docker stop test-app
+          docker rm test-app
+
+      - name: Push to Docker Hub 
+        if: github.ref == 'refs/heads/main'
+        run: |
+            docker push ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }}
+            docker push ${{  secrets.DOCKER_USERNAME }}/salesken-app:latest
