@@ -21,7 +21,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Set image tag
-        run: |
+        run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+          
+      - name: Build Docker image
+        run: | 
           docker build -t ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} .
           docker tag ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} ${{ secrets.DOCKER_USERNAME }}/salesken-app:latest
 
