@@ -22,7 +22,7 @@ jobs:
 
       - name: Set image tag
         run: |
-          docker build -t $ {{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} .
           docker tag ${{ secrets.DOCKER_USERNAME }}/salesken-app:${{ env.IMAGE_TAG }} ${{ secrets.DOCKER_USERNAME }}/salesken-app:latest
 
       - name: Test Docker image
