@@ -4,7 +4,7 @@ pipeline {
      
          environment {
                     DOCKER_HUB_CREDS = credentials('dockerhub-creds')
-                    IMAGE_NAME = "${DOCKER_HUB_CREDS_USR}/ Salesken-app"
+                    IMAGE_NAME = "${DOCKER_HUB_CREDS_USR}/salesken-app"
                     IMAGE_TAG = "${BUILD_NUMBER}"
                      }
       stages{
