@@ -30,11 +30,11 @@ pipeline {
                  sh """
                  docker run -d --name jenkins-test-${BUILD_NUMBER} \
                  -p 5001:5000 \
-                 sleep 5
-                 docker ps | grep jenkins-test-${BUILD_NUMBER}
-                 docker stop jenkins-test-${BUILD_NUMBER}
-                 docker rm jenkins-test-${BUILD_NUMBER}
+                 docker ps | grep jenkins-test-${BUILD_NUMBER} \
+                 docker stop jenkins-test-${BUILD_NUMBER} \
+                 docker rm jenkins-test-${BUILD_NUMBER} \
                    """
+                 sleep 5
                } 
                       }
 
