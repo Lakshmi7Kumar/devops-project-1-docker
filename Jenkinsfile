@@ -53,8 +53,10 @@ pipeline {
           stage('Cleanup'){
               steps{
                 echo "Cleaning up local images....."
-                sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} || true"
-                sh "docker rmi ${IMAGE_NAME}:latest || true"
+                sh "docker stop jenkins-test-${BUILD_NUMBER} 2>/dev/null ||true"
+                sh "docker rm jenkins-test-${BUILD_NUMBER} 2>/dev/null ||true"
+                sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} 2>/dev/null ||true"
+                sh "docker rmi ${IMAGE_NAME}:latest 2>/dev/null ||true"
                    } 
                           }
          }
@@ -68,6 +70,7 @@ pipeline {
                         }
                  always{
                     echo "Pipeline finished. Build Number: ${BUILD_NUMBER}"
+                     sh "docker rm -f jenkins-test-${BUILD_NUMBER} 2>/dev/null || true"
                        }
                 }
 }
