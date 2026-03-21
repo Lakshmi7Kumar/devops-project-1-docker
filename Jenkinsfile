@@ -2,7 +2,7 @@ pipeline {
   
    agent any
      
-         envirnoment {
+         environment {
                     DOCKER_HUB_CREDS = credentials('dockerhub-creds')
                     IMAGE_NAME = "${DOCKER_HUB_CREDS_USR}/ Salesken-app"
                     IMAGE_TAG = "${BUILD_NUMBER}"
