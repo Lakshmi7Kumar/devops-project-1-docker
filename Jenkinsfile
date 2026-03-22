@@ -28,7 +28,7 @@ pipeline {
            steps{
                  echo " Testing Docker Image...."
                  sh docker run -d --name jenkins-test-${BUILD_NUMBER} \
-                 sh sleep 5
+                 sh sleep 5 \
                  sh -p 5001:5000 \
                  sh docker ps | grep jenkins-test-${BUILD_NUMBER} \
                  sh docker stop jenkins-test-${BUILD_NUMBER} \
