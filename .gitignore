@@ -8,4 +8,7 @@ __pycache__/
 *.pyo
 .env
 .DS_Store
-*.log
+*.logngrok
+ngrok
+ngrok-v3-stable-linux-amd64.tgz
+*.tgz
