@@ -32,3 +32,4 @@ docker compose up -d
 #checking jenkins scm
 # poll test
 # testing poll scm
+# poll scm fixed
