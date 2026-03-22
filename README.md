@@ -31,3 +31,4 @@ docker compose up -d
 # webhook test
 #checking jenkins scm
 # poll test
+# testing poll scm
