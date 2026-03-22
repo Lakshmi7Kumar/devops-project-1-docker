@@ -29,3 +29,4 @@ docker compose up -d
 - Named volumes for data persistence
 - Container networking (app reaches db by service name, not IP)# CI/CD enabled
 # webhook test
+#checking jenkins scm
