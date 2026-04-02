@@ -34,3 +34,4 @@ docker compose up -d
 # testing poll scm
 # poll scm fixed
 webhook test
+poll test
